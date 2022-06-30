@@ -1,0 +1,42 @@
+.field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fields {
+  width: 486px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.dates-fields {
+  width: 288px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.field-label {
+  width: 174px;
+}
+
+.field-input {
+  box-sizing: border-box;
+  width: 486px;
+}
+
+.field-input-medium {
+  box-sizing: border-box;
+  width: 386px;
+}
+
+.field-input-small {
+  box-sizing: border-box;
+  width: 239px;
+}
+
+.field-date {
+  box-sizing: border-box;
+  width: 140px;
+}

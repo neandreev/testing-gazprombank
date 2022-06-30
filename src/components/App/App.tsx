@@ -1,19 +1,20 @@
-import { FC } from "react";
-import { useAdditionalInfo, useDocs, useLicenses, useRegistration } from "../../context";
+import { FC, useState } from "react";
+
 import Layout from "../Layout/Layout";
+import DocumentForm from "../DocumentForm/DocumentForm";
+import Modal from "../Modal/Modal";
 
 const App: FC = () => {
-  const docs = useDocs();
-  const registration = useRegistration();
-  const licenses = useLicenses();
-  const additionalInfo = useAdditionalInfo();
+  const [isModalOpen, setIsModalOpen] = useState(false);
 
-  return <Layout>
-    {JSON.stringify(docs)}
-    {JSON.stringify(registration)}
-    {JSON.stringify(licenses)}
-    {JSON.stringify(additionalInfo)}
-  </Layout>;
+  return (
+    <>
+      <Layout>
+        <DocumentForm openModal={() => setIsModalOpen(true)} />
+      </Layout>
+      {isModalOpen && <Modal />}
+    </>
+  );
 };
 
 export default App;

@@ -1,0 +1,28 @@
+.field {
+  display: flex;
+  justify-content: space-between;
+}
+
+.fields {
+  display: flex;
+}
+
+.fields * {
+  margin: 0 0.5px;
+}
+
+.field-label {
+  width: 174px;
+}
+
+.field-input {
+  width: 534px;
+}
+
+.field-input-medium {
+  width: 386px;
+}
+
+.field-date {
+  width: 140px;
+}

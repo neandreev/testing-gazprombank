@@ -1,0 +1,9 @@
+.date-input {
+  display: flex;
+  flex-direction: column;
+}
+
+.error {
+  color: red;
+  width: 140px;
+}
