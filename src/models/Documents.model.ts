@@ -1,10 +1,10 @@
 export interface Documents {
-  identificationNumber: number | null;
+  identificationNumber: number;
   fullName: string;
-  birthDate: Date | null;
+  birthDate: Date;
   birthPlace: string;
   citizenship: string;
   insuranceCertificate?: string;
   residentialAddress: string;
-  residenceAddress: string;
+  residenceAddress?: string;
 }

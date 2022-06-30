@@ -1,4 +1,4 @@
 export interface Registration {
-  registrationDate: Date | null;
+  registrationDate: Date;
   registrationPlace: string;
 };
