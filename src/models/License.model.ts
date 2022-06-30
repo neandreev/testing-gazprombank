@@ -1,5 +1,5 @@
 export interface License {
-  id: number,
+  id: string,
   licenseType: string,
   licenseNumber: string,
   licenseIssuer: string,
