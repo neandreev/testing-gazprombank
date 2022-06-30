@@ -2,6 +2,12 @@
   max-width: 1280px;
 }
 
+.layout__flex {
+  display: flex;
+}
+
 .layout__content {
   display: flex;
+  flex-direction: column;
+  width: 725px;
 }

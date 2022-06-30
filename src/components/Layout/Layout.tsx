@@ -1,4 +1,5 @@
 import { FC } from "react";
+import FillingInfo from "../FillingInfo/FillingInfo";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 
@@ -11,9 +12,12 @@ interface Props {
 const Layout: FC<Props> = ({ children }) => (
   <div className={styles.layout}>
     <Header />
-    <div className={styles.layout__content}>
+    <div className={styles.layout__flex}>
       <Sidebar />
-      {children}
+      <div className={styles.layout__content}>
+        {children}
+      </div>
+      <FillingInfo/>
     </div>
   </div>
 );
