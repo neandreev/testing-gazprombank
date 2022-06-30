@@ -1,0 +1,7 @@
+.layout {
+  max-width: 1280px;
+}
+
+.layout__content {
+  display: flex;
+}

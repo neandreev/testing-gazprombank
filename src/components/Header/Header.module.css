@@ -1,0 +1,9 @@
+.header {
+  color: #262C40;
+
+  height: 66px;
+  display: flex;
+  justify-content: space-between;
+  box-shadow: 0px 4px 22px rgba(38, 44, 64, 0.08);
+}
+
