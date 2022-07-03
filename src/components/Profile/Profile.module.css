@@ -1,0 +1,32 @@
+.profile {
+  display: flex;
+  align-items: center;
+
+  margin: 0 10px;
+}
+
+.user-link {
+  display: flex;
+  align-items: center;
+
+  color: #262C40;
+  text-decoration: none;
+}
+
+.user-link:visited {
+  color: #262C40;
+}
+
+.user-link > * {
+  margin: 0 5px;
+}
+
+.notifications {
+  display: flex;
+  align-items: center;
+  margin: 0 15px;
+}
+
+.logout {
+  margin: 0 15px;
+}

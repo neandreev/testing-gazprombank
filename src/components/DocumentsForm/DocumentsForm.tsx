@@ -1,5 +1,5 @@
-import { FC } from "react";
-import { Form, Field } from "react-final-form";
+import { FC, useEffect } from "react";
+import { Field, useFormState } from "react-final-form";
 
 import DateInput from "../DateInput/DateInput";
 import TextInput from "../TextInput/TextInput";
@@ -7,22 +7,28 @@ import TextInput from "../TextInput/TextInput";
 import styles from "./DocumentsForm.module.css";
 
 const DocumentsForm: FC = () => {
-  const handleSubmit = (values: any) => {
-    console.log(values);
-  };
+  const formValue = useFormState();
 
-  const required = (value: any) => (value ? undefined : "Это поле обязательно");
+  // useEffect(() => {
+  //   console.log("FORM DATA", formValue.values);
+  // }, [formValue])
+
+  // const handleSubmit = (values: any) => {
+  //   console.log(values);
+  // };
+
+  const required = (value: any) => (value ? undefined : "Необходимо заполнить");
 
   return (
     // <Form
     //   onSubmit={handleSubmit}
     //   render={({ handleSubmit }) => (
-    <div>
-      <h2>Общая информация</h2>
+    <div className={styles["documents-form"]}>
+      <h2 className={styles["form-header"]}>Общая информация</h2>
       <div className={styles.field}>
         <label className={styles["field-label"]}>ИНН, ОГРН или ОГРНИП</label>
         <Field
-          className={styles["field-input"]}
+          className={`${styles["field-input"]} ${styles["field-input-medium"]}`}
           name="identificationNumber"
           component={TextInput}
           validate={required}
@@ -41,13 +47,13 @@ const DocumentsForm: FC = () => {
         <label className={styles["field-label"]}>Дата и место рождения</label>
         <div className={styles.fields}>
           <Field
-            className={styles["field-date"]}
+            className={`${styles["field-input"]} ${styles["field-date"]}`}
             name="birthDate"
             component={DateInput}
             validate={required}
           />
           <Field
-            className={styles["field-input-medium"]}
+            className={`${styles["field-input"]} ${styles["field-input-medium"]}`}
             name="birthPlace"
             component={TextInput}
             validate={required}

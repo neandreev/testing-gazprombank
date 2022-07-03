@@ -1,4 +1,4 @@
-.field {
+/* .field {
   display: flex;
   justify-content: space-between;
 }
@@ -25,4 +25,61 @@
 
 .field-date {
   width: 140px;
+} */
+
+.registration-form {
+  margin: 20px 0 48px 0;
 }
+
+.form-header {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 700;
+
+  margin: 0;
+  margin-bottom: 20px;
+}
+
+.field {
+  display: flex;
+  margin: 16px 0;
+
+  align-items: center;
+}
+
+.fields {
+  width: 534px;
+
+  display: flex;
+  justify-content: space-between;
+}
+
+.field-label {
+  display: block;
+
+  width: 174px;
+  margin-right: 12px;
+
+  color: #262C40;
+
+  font-size: 14px;
+  line-height: 16px;
+}
+
+.field-input {
+  box-sizing: border-box;
+
+  width: 534px;
+  border: 1px solid #D7DEE9;
+  border-radius: 8px;
+  height: 32px;
+}
+
+.field-input-medium {
+  width: 386px;
+}
+
+.field-date {
+  width: 140px;
+}
+

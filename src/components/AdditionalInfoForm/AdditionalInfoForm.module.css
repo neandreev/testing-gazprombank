@@ -1,0 +1,19 @@
+.toggles {
+  margin: 20px 0 48px 0;
+}
+
+.toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  width: 725px;
+  margin-bottom: 8px;
+}
+
+.toggle-label {
+  margin: 0;
+
+  font-size: 18px;
+  line-height: 20px;
+}

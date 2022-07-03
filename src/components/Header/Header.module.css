@@ -4,6 +4,11 @@
   height: 66px;
   display: flex;
   justify-content: space-between;
+  align-items: center;
   box-shadow: 0px 4px 22px rgba(38, 44, 64, 0.08);
+}
+
+.logo {
+  margin: 0 35px;
 }
 

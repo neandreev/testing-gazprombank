@@ -3,3 +3,32 @@
   color: #fff;
   background: linear-gradient(180deg, #0057B6 0%, #5960EA 100%);
 }
+
+.links-list {
+  padding: 0;
+}
+
+.link-list {
+  list-style-type: none;
+  padding: 10px
+}
+
+.link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+
+  color: #fff;
+  font-size: 12px;
+  line-height: 16px;
+  text-decoration: none;
+}
+
+.link:visited {
+  color: #fff;
+}
+
+.link-icon {
+  margin-bottom: 8px; 
+}

@@ -1,49 +1,56 @@
 import { FC } from "react";
 import { Field } from "react-final-form";
-import ToggleInput from "../ToggleInput/ToggleInput";
+
+import ToggleFormInput from "../ToggleFormInput/ToggleFormInput";
+
+import styles from "./AdditionalInfoForm.module.css";
 
 const AdditionalInfoForm: FC = () => {
   return (
-    <div>
-      <div>
-        <label>
+    <div className={styles.toggles}>
+      <div className={styles.toggle}>
+        <h3 className={styles["toggle-label"]}>
           Предоставление услуг с использованием сайта в сети Интернет
-        </label>
+        </h3>
         <Field
           name="isProvidingInternet"
-          component={ToggleInput}
+          component={ToggleFormInput}
           type="checkbox"
         />
       </div>
-      <div>
-        <label>Статус публичного должностного лица (ПДЛ)</label>
+      <div className={styles.toggle}>
+        <h3 className={styles["toggle-label"]}>
+          Статус публичного должностного лица (ПДЛ)
+        </h3>
         <Field
           name="isPublicOfficial"
-          component={ToggleInput}
+          component={ToggleFormInput}
           type="checkbox"
         />
       </div>
-      <div>
-        <label>Наличие выгодоприобретателей</label>
+      <div className={styles.toggle}>
+        <h3 className={styles["toggle-label"]}>Наличие выгодоприобретателей</h3>
         <Field
           name="haveBeneficiaries"
-          component={ToggleInput}
+          component={ToggleFormInput}
           type="checkbox"
         />
       </div>
-      <div>
-        <label>Наличие представителей</label>
+      <div className={styles.toggle}>
+        <h3 className={styles["toggle-label"]}>Наличие представителей</h3>
         <Field
           name="haveRepresentatives"
-          component={ToggleInput}
+          component={ToggleFormInput}
           type="checkbox"
         />
       </div>
-      <div>
-        <label>Наличие бенефициарного владельца</label>
+      <div className={styles.toggle}>
+        <h3 className={styles["toggle-label"]}>
+          Наличие бенефициарного владельца
+        </h3>
         <Field
           name="haveBeneficialOwner"
-          component={ToggleInput}
+          component={ToggleFormInput}
           type="checkbox"
         />
       </div>

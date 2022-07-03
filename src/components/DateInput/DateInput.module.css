@@ -3,7 +3,15 @@
   flex-direction: column;
 }
 
+.input {
+  font-family: Montserrat;
+  padding: 0 5px;
+}
+
 .error {
   color: red;
   width: 140px;
+  border-color: red;
+  font-size: 13px;
+  line-height: 16px;
 }

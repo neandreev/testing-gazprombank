@@ -9,6 +9,9 @@ import AdditionalInfoForm from "../AdditionalInfoForm/AdditionalInfoForm";
 import DocumentsForm from "../DocumentsForm/DocumentsForm";
 import LicensesForm from "../LicensesForm/LicensesForm";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
+import Button from "../Button/Button";
+
+import styles from "./DocumentForm.module.css";
 
 interface Props {
   openModal: () => void;
@@ -47,13 +50,14 @@ const DocumentForm: FC<Props> = ({ openModal }) => {
       initialValues={backfill && backfillData}
       render={({ handleSubmit }) => {
         return (
-          <form onSubmit={(e) => e.preventDefault()}>
-            <button onClick={() => setBackfill(true)}>Backfill</button>
+          <form  onSubmit={(e) => e.preventDefault()} className={styles.form}>
+            {/* <button onClick={() => setBackfill(true)}>Backfill</button> */}
             <DocumentsForm />
             <RegistrationForm />
             <LicensesForm />
             <AdditionalInfoForm />
-            <button onClick={handleSubmit}>Отправить</button>
+            <Button styling="primary" onClick={handleSubmit} text="Перейти к формированию документов" />
+            {/* <button onClick={handleSubmit}>Отправить</button> */}
           </form>
         );
       }}

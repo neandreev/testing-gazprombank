@@ -4,6 +4,7 @@ export interface License {
   number: string,
   typeOfActivity: string,
   issuer: string,
-  issuanceDate: Date,
-  expirationDate: Date,
+  issuanceDate?: string,
+  expirationDate?: string,
+  isPermanent?: boolean,
 }

@@ -1,0 +1,72 @@
+.button {
+  height: 36px;
+  font-family: "Montserrat";
+  font-size: 16px;
+  margin-right: 16px;
+
+  border-radius: 8px;
+  padding: 8px 24px;
+}
+
+.button-primary {
+  color: #fff;
+  border: none;
+  background-color: #0057b6;
+}
+
+.button-secondary {
+  color: #0057b6;
+  border: 1px solid #d7dee9;
+
+  background-color: #ffffff;
+}
+
+.button-transparent {
+  color: #0057B6;
+  border: none;
+
+  background-color: #F3F4F7;
+}
+
+.button-edit-remove-icon {
+  /* padding: 6px 12px 6px 16px; */
+  padding: 6px 10px 6px 1px;
+}
+
+.button-add-icon {
+  padding: 6px 16px 6px 16px;
+}
+
+.icon {
+  /* margin-right: 12.75px; */
+}
+
+.icon-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  margin-right: 12.75px;
+
+  /* width: 24px;
+  height: 24px; */
+}
+
+.span {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.icon-background {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+
+  background-color: #fff;
+  border: 1px solid #D7DEE9;
+  border-radius: 50%;
+  
+  width: 24px;
+  height: 24px;
+}

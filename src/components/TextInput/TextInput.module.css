@@ -1,8 +1,23 @@
 .text-input {
   display: flex;
   flex-direction: column;
+
+  font-family: Montserrat;
+}
+
+.input {
+  font-family: Montserrat;
+  padding: 0 5px;
+}
+
+.input:focus {
+  outline: 1px solid#262C40;
+  outline-offset: -1px;
 }
 
 .error {
   color: red;
+  width: 160px;
+  font-size: 14px;
+  line-height: 16px;
 }

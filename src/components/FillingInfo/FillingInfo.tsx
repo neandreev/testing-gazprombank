@@ -1,7 +1,7 @@
 import { FC } from "react";
 
 const FillingInfo: FC = () => {
-  return <div>FillingInfo</div>;
+  return <div></div>;
 };
 
 export default FillingInfo;

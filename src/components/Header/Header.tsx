@@ -3,12 +3,12 @@ import { FC } from "react";
 import { ReactComponent as Logo } from "./LOGO.svg";
 
 import styles from "./Header.module.css";
-import Authentication from "../Authentication/Authentication";
+import Profile from "../Profile/Profile";
 
 const Header: FC = () => {
   return <div className={styles.header}>
-    <Logo />
-    <Authentication />
+    <Logo className={styles.logo} />
+    <Profile />
   </div>;
 };
 

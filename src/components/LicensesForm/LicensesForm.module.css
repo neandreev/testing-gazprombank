@@ -1,0 +1,29 @@
+.licenses-form {
+  margin: 20px 0 48px 0;
+  width: 725px;
+}
+
+.licenses-header {
+  margin: 0;
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.licenses-toggle {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.licenses {
+  margin-bottom: 24px;
+}
+
+.form-header {
+  font-size: 18px;
+  line-height: 20px;
+  font-weight: 700;
+
+  margin: 0;
+  margin-bottom: 20px;
+}
