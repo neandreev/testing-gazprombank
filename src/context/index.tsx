@@ -5,22 +5,26 @@ import _uniqueId from "lodash-es/uniqueId";
 import { License } from "../models/License.model";
 import { Data } from "../models/Data.model";
 
-type FillingStatus = 'filling' | 'error' | 'complete';
+type Status = 'filling' | 'error' | 'complete';
 
 const initialFillingStatus = {
   information: {
-    status: 'filling' as FillingStatus,
+    fields: ['identificationNumber', 'fullName', 'birthPlace', 'citizenship', 'residentialAddress', 'birthDate'],
+    status: 'filling' as Status,
   },
   registration: {
-    status: 'filling' as FillingStatus,
+    fields: ['registrationDate', 'registrationNumber', 'registrationPlace'],
+    status: 'filling' as Status,
   },
   licenses: {
-    status: 'filling' as FillingStatus,
+    status: 'filling' as Status,
   },
   poll: {
-    status: 'filling' as FillingStatus,
+    status: 'filling' as Status,
   }
 }
+
+export type FillingStatus = typeof initialFillingStatus;
 
 const useStore = () => {
   const [licenses, setLicenses] = useState<License[]>([]);
