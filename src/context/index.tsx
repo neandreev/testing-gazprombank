@@ -5,18 +5,38 @@ import _uniqueId from "lodash-es/uniqueId";
 import { License } from "../models/License.model";
 import { Data } from "../models/Data.model";
 
+type FillingStatus = 'filling' | 'error' | 'complete';
+
+const initialFillingStatus = {
+  information: {
+    status: 'filling' as FillingStatus,
+  },
+  registration: {
+    status: 'filling' as FillingStatus,
+  },
+  licenses: {
+    status: 'filling' as FillingStatus,
+  },
+  poll: {
+    status: 'filling' as FillingStatus,
+  }
+}
+
 const useStore = () => {
   const [licenses, setLicenses] = useState<License[]>([]);
   const [data, setData] = useState<Data | null>(null);
   const [licensesIds, setLicensesIds] = useState<string[]>([_uniqueId()]);
+  const [fillingStatus, setFillingStatus] = useState<typeof initialFillingStatus>(initialFillingStatus);
 
   return {
     licenses,
     licensesIds,
     data,
+    fillingStatus,
     setLicenses,
     setLicensesIds,
     setData,
+    setFillingStatus,
   };
 };
 
@@ -41,7 +61,9 @@ export const useLicensesIds = () =>
 export const useLicense = (id: string) =>
   _find(useContext(StoreContext)?.licenses, { id });
 export const useData = () => useContext(StoreContext)?.data;
+export const useFillingStatus = () => useContext(StoreContext)?.fillingStatus;
 
 export const useSetLicenses = () => useContext(StoreContext)?.setLicenses;
 export const useSetLicensesIds = () => useContext(StoreContext)?.setLicensesIds;
 export const useSetData = () => useContext(StoreContext)?.setData;
+export const useSetFillingStatus = () => useContext(StoreContext)?.setFillingStatus;
