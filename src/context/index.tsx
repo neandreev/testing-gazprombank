@@ -4,6 +4,7 @@ import _uniqueId from "lodash-es/uniqueId";
 
 import { License } from "../models/License.model";
 import { Data } from "../models/Data.model";
+import { FormState } from "final-form";
 
 type Status = 'filling' | 'error' | 'complete';
 
@@ -26,18 +27,23 @@ const initialFillingStatus = {
 
 export type FillingStatus = typeof initialFillingStatus;
 
+export type LicenseFormState = FormState<Record<string, any>, Partial<Record<string, any>>>;
+
 const useStore = () => {
   const [licenses, setLicenses] = useState<License[]>([]);
+  const [licensesForms, setLicensesForms] = useState<LicenseFormState[]>([])
   const [data, setData] = useState<Data | null>(null);
   const [licensesIds, setLicensesIds] = useState<string[]>([_uniqueId()]);
   const [fillingStatus, setFillingStatus] = useState<typeof initialFillingStatus>(initialFillingStatus);
 
   return {
     licenses,
+    licensesForms,
     licensesIds,
     data,
     fillingStatus,
     setLicenses,
+    setLicensesForms,
     setLicensesIds,
     setData,
     setFillingStatus,
@@ -60,14 +66,17 @@ export const StoreContextProvider: FC<Props> = ({ children }) => {
 
 export const useLicenses = () =>
   useContext(StoreContext)?.licenses as License[];
+export const useLicensesForms = () =>
+  useContext(StoreContext)?.licensesForms as LicenseFormState[];
 export const useLicensesIds = () =>
   useContext(StoreContext)?.licensesIds as string[];
 export const useLicense = (id: string) =>
   _find(useContext(StoreContext)?.licenses, { id });
 export const useData = () => useContext(StoreContext)?.data;
-export const useFillingStatus = () => useContext(StoreContext)?.fillingStatus;
+export const useFillingStatus = () => useContext(StoreContext)?.fillingStatus as FillingStatus;
 
 export const useSetLicenses = () => useContext(StoreContext)?.setLicenses;
+export const useSetLicensesForms = () => useContext(StoreContext)?.setLicensesForms;
 export const useSetLicensesIds = () => useContext(StoreContext)?.setLicensesIds;
 export const useSetData = () => useContext(StoreContext)?.setData;
 export const useSetFillingStatus = () => useContext(StoreContext)?.setFillingStatus;
