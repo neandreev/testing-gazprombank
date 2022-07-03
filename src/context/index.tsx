@@ -6,35 +6,55 @@ import { License } from "../models/License.model";
 import { Data } from "../models/Data.model";
 import { FormState } from "final-form";
 
-type Status = 'filling' | 'error' | 'complete';
+type Status = "filling" | "error" | "complete";
 
 const initialFillingStatus = {
   information: {
-    fields: ['identificationNumber', 'fullName', 'birthPlace', 'citizenship', 'residentialAddress', 'birthDate'],
-    status: 'filling' as Status,
+    fields: [
+      "identificationNumber",
+      "fullName",
+      "birthPlace",
+      "citizenship",
+      "residentialAddress",
+      "birthDate",
+    ],
+    status: "filling" as Status,
+    name: "Информация",
   },
   registration: {
-    fields: ['registrationDate', 'registrationNumber', 'registrationPlace'],
-    status: 'filling' as Status,
+    fields: ["registrationDate", "registrationNumber", "registrationPlace"],
+    status: "filling" as Status,
+    name: "Сведения",
   },
   licenses: {
-    status: 'filling' as Status,
+    fields: ["type", "number", "typeOfActivity", "issuer"],
+    status: "filling" as Status,
+    name: "Лицензии",
   },
   poll: {
-    status: 'filling' as Status,
-  }
-}
+    status: "filling" as Status,
+    name: "Опросник",
+  },
+};
 
 export type FillingStatus = typeof initialFillingStatus;
 
-export type LicenseFormState = FormState<Record<string, any>, Partial<Record<string, any>>>;
+export interface LicenseFormState
+  extends FormState<Record<string, any>, Partial<Record<string, any>>> {
+  id: string;
+}
 
 const useStore = () => {
+  const initialLicenseFormId = _uniqueId();
+
   const [licenses, setLicenses] = useState<License[]>([]);
-  const [licensesForms, setLicensesForms] = useState<LicenseFormState[]>([])
+  const [licensesForms, setLicensesForms] = useState<LicenseFormState[]>([]);
   const [data, setData] = useState<Data | null>(null);
-  const [licensesIds, setLicensesIds] = useState<string[]>([_uniqueId()]);
-  const [fillingStatus, setFillingStatus] = useState<typeof initialFillingStatus>(initialFillingStatus);
+  const [licensesIds, setLicensesIds] = useState<string[]>([
+    initialLicenseFormId,
+  ]);
+  const [fillingStatus, setFillingStatus] =
+    useState<typeof initialFillingStatus>(initialFillingStatus);
 
   return {
     licenses,
@@ -73,10 +93,13 @@ export const useLicensesIds = () =>
 export const useLicense = (id: string) =>
   _find(useContext(StoreContext)?.licenses, { id });
 export const useData = () => useContext(StoreContext)?.data;
-export const useFillingStatus = () => useContext(StoreContext)?.fillingStatus as FillingStatus;
+export const useFillingStatus = () =>
+  useContext(StoreContext)?.fillingStatus as FillingStatus;
 
 export const useSetLicenses = () => useContext(StoreContext)?.setLicenses;
-export const useSetLicensesForms = () => useContext(StoreContext)?.setLicensesForms;
+export const useSetLicensesForms = () =>
+  useContext(StoreContext)?.setLicensesForms;
 export const useSetLicensesIds = () => useContext(StoreContext)?.setLicensesIds;
 export const useSetData = () => useContext(StoreContext)?.setData;
-export const useSetFillingStatus = () => useContext(StoreContext)?.setFillingStatus;
+export const useSetFillingStatus = () =>
+  useContext(StoreContext)?.setFillingStatus;

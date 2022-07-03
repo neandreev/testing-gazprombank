@@ -1,0 +1,44 @@
+.header {
+  font-size: 14px;
+  line-height: 20px;
+
+  margin-top: 25px;
+}
+
+.status {
+  display: flex;
+  align-items: center;
+
+  font-size: 14px;
+  line-height: 20px;
+}
+
+.icon {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+
+  margin-right: 16px;
+}
+
+.filling {
+  background-color: gray;
+}
+
+.error {
+  background-color: red;
+}
+
+.complete {
+  background-color: #239c3d;
+}
+
+.stick {
+  margin-left: 4px;
+  height: 15px;
+  width: 1px;
+  left: calc(50% - 1px / 2 + 0.5px);
+  top: 20px;
+  bottom: 0px;
+  background: #B8BDCE;
+}

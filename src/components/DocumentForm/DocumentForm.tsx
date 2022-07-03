@@ -3,7 +3,13 @@ import { Form } from "react-final-form";
 
 import { Data } from "../../models/Data.model";
 
-import { useLicenses, useSetData } from "../../context";
+import {
+  FillingStatus,
+  useFillingStatus,
+  useLicenses,
+  useSetData,
+  useSetFillingStatus,
+} from "../../context";
 
 import AdditionalInfoForm from "../AdditionalInfoForm/AdditionalInfoForm";
 import DocumentsForm from "../DocumentsForm/DocumentsForm";
@@ -12,6 +18,7 @@ import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import Button from "../Button/Button";
 
 import styles from "./DocumentForm.module.css";
+import DocumentFormComponent from "../DocumentFormComponent/DocumentFormComponent";
 
 interface Props {
   openModal: () => void;
@@ -34,10 +41,25 @@ const backfillData = {
   haveBeneficialOwner: true,
 };
 
+// const validateFillingInfo = (
+//   values: any,
+//   fillingStatus: FillingStatus,
+//   setFillingStatus: () => void
+// ) => {
+//   const infoValidationValues = fillingStatus.information.fields;
+//   const isInfoInvalid = infoValidationValues.some((field) => {
+    
+//   });
+
+//   return {};
+// };
+
 const DocumentForm: FC<Props> = ({ openModal }) => {
   const licenses = useLicenses();
   const setData = useSetData()!;
   const [backfill, setBackfill] = useState(false);
+  const fillingStatus = useFillingStatus();
+  const setFillingStatus = useSetFillingStatus();
 
   return (
     <Form
@@ -48,19 +70,28 @@ const DocumentForm: FC<Props> = ({ openModal }) => {
         console.log({ ...values, licenses });
       }}
       initialValues={backfill && backfillData}
-      render={({ handleSubmit }) => {
-        return (
-          <form  onSubmit={(e) => e.preventDefault()} className={styles.form}>
-            {/* <button onClick={() => setBackfill(true)}>Backfill</button> */}
-            <DocumentsForm />
-            <RegistrationForm />
-            <LicensesForm />
-            <AdditionalInfoForm />
-            <Button styling="primary" onClick={handleSubmit} text="Перейти к формированию документов" />
-            {/* <button onClick={handleSubmit}>Отправить</button> */}
-          </form>
-        );
-      }}
+      // validate={(values) =>
+      //   validateFillingInfo(values, fillingStatus, setFillingStatus)
+      // }
+      validateOnBlur={true}
+      // render={({ handleSubmit }) => {
+      //   return (
+      //     <form onSubmit={(e) => e.preventDefault()} className={styles.form}>
+      //       {/* <button onClick={() => setBackfill(true)}>Backfill</button> */}
+      //       <DocumentsForm />
+      //       <RegistrationForm />
+      //       <LicensesForm />
+      //       <AdditionalInfoForm />
+      //       <Button
+      //         styling="primary"
+      //         onClick={handleSubmit}
+      //         text="Перейти к формированию документов"
+      //       />
+      //       {/* <button onClick={handleSubmit}>Отправить</button> */}
+      //     </form>
+      //   );
+      // }}
+      component={DocumentFormComponent}
     />
   );
 };

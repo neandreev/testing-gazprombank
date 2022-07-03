@@ -4,7 +4,7 @@ import _omit from "lodash-es/omit";
 
 import { Form, Field } from "react-final-form";
 
-import { useLicenses, useSetLicenses } from "../../context";
+import { useLicenses, useLicensesForms, useSetLicenses, useSetLicensesForms } from "../../context";
 import { License } from "../../models/License.model";
 
 import DateInput from "../DateInput/DateInput";
@@ -24,6 +24,8 @@ interface Props {
 const LicenseForm: FC<Props> = ({ id, closeForm, changeForm, licenseData }) => {
   const licenses = useLicenses();
   const setLicenses = useSetLicenses()!;
+  const licensesForms = useLicensesForms();
+  const setLicensesForms = useSetLicensesForms()!;
   const [togglePermanent, setTogglePermanent] = useState(
     licenseData?.isPermanent ? true : false
   );
@@ -32,7 +34,9 @@ const LicenseForm: FC<Props> = ({ id, closeForm, changeForm, licenseData }) => {
     const newLicense = !values.isPermanent
       ? { id, ...values }
       : _omit({ id, ...values }, ["issuanceDate", "expirationDate"]);
+    const newLicensesForms = licensesForms.filter((licenseForm) => licenseForm.id !== id);
 
+    setLicensesForms(newLicensesForms);
     setLicenses(_uniqBy([...licenses, newLicense], "id"));
     changeForm();
   };
@@ -70,6 +74,7 @@ const LicenseForm: FC<Props> = ({ id, closeForm, changeForm, licenseData }) => {
             handleSubmit={handleSubmit}
             licenseData={licenseData}
             closeForm={closeForm}
+            id={id}
           />
         );
       }}

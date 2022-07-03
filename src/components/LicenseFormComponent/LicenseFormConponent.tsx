@@ -1,5 +1,6 @@
 import { FC, useCallback, useEffect, useState } from "react";
 import { Field, useFormState } from "react-final-form";
+import { useLicensesForms, useSetLicensesForms } from "../../context";
 
 import { License } from "../../models/License.model";
 
@@ -13,28 +14,37 @@ interface Props {
   handleSubmit: () => void;
   closeForm: () => void;
   licenseData?: License;
+  id: string;
 }
 
 const LicenseFormComponent: FC<Props> = ({
   handleSubmit,
   licenseData,
   closeForm,
+  id
 }) => {
   const formData = useFormState();
+  const { values, touched, errors } = formData;
+  const licensesForms = useLicensesForms();
+  const setLicensesForms = useSetLicensesForms()!;
   const [togglePermanent, setTogglePermanent] = useState(
     licenseData?.isPermanent ? true : false
   );
 
   useEffect(() => {
-    console.log("LICENSE FORM DATA", formData.values);
-  }, [formData]);
+    const filteredLicenses = licensesForms.filter((formData) => formData.id !== id);
+    const newLicensesForms = [...filteredLicenses, { ...formData, id }];
+    setLicensesForms(newLicensesForms)
+  }, [values, touched, errors]);
 
   const required = (value: any) => (value ? undefined : "Необходимо заполнить");
-  const dateRequired = useCallback((value: any) => {
-    console.log("LICENSE FORM DATA", formData.values.isPermanent)
-    return formData.values["isPermanent"] ? undefined : required(value);
-    // return formData.values["isPermanent"] ? undefined : required(value);
-  }, [formData]);
+  const dateRequired = useCallback(
+    (value: any) => {
+      return formData.values["isPermanent"] ? undefined : required(value);
+      // return formData.values["isPermanent"] ? undefined : required(value);
+    },
+    [formData]
+  );
 
   return (
     <div onSubmit={handleSubmit}>

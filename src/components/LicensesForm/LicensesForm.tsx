@@ -5,6 +5,7 @@ import LicenseElement from "../LicenseElement/LicenseElement";
 import {
   useLicensesIds,
   useSetLicenses,
+  useSetLicensesForms,
   useSetLicensesIds,
 } from "../../context";
 
@@ -16,10 +17,12 @@ const LicensesForm: FC = () => {
   const licensesFormsIds = useLicensesIds();
   const setLicensesFormsIds = useSetLicensesIds()!;
   const setLicenses = useSetLicenses()!;
+  const setLicensesForms = useSetLicensesForms()!;
 
   const [licensesNeeded, setLicensesNeeded] = useState(true);
 
   const handleToggleLicenses = (newLicensesNeeded: boolean) => {
+    setLicensesForms([]);
     setLicensesNeeded(newLicensesNeeded);
     setLicensesFormsIds([_uniqueId()]);
     setLicenses([]);
