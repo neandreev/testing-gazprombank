@@ -11,22 +11,20 @@ const FillingInfo: FC = () => {
     <div className={styles["filling-info"]}>
       <h3 className={styles.header}>Заполнение анкеты</h3>
       <div>
-        {fillingStatusValues.map((fillStatus, idx) => {
-          const styleStatus = styles[fillStatus.status];
+        {fillingStatusValues.map((fillStatus, idx) => (
+          <div key={fillStatus.name}>
+            <div className={styles.status}>
+              <div
+                className={`${styles.icon} ${styles[fillStatus.status]}`}
+              ></div>
 
-          return (
-            <div key={fillStatus.name}>
-              <div className={styles.status}>
-                <div className={`${styles.icon} ${styleStatus}`}></div>
-
-                <span>{fillStatus.name}</span>
-              </div>
-              {idx !== fillingStatusValues.length - 1 ? (
-                <div className={styles.stick}></div>
-              ) : null}
+              <span>{fillStatus.name}</span>
             </div>
-          );
-        })}
+            {idx !== fillingStatusValues.length - 1 ? (
+              <div className={styles.stick}></div>
+            ) : null}
+          </div>
+        ))}
       </div>
     </div>
   );
