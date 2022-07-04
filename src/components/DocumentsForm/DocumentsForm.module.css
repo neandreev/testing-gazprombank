@@ -19,10 +19,11 @@
 }
 
 .fields {
-  width: 534px;
+  width: 100%;
 
   display: flex;
   justify-content: space-between;
+  gap: 0 8px;
 }
 
 .field-label {
@@ -40,14 +41,14 @@
 .field-input {
   box-sizing: border-box;
 
-  width: 534px;
+  width: 100%;
   border: 1px solid #D7DEE9;
   border-radius: 8px;
   height: 32px;
 }
 
 .field-input-medium {
-  width: 386px;
+  width: calc(100% / 3 * 2);
 }
 
 .field-date {

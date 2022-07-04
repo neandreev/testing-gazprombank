@@ -48,13 +48,13 @@ const LicenseFormComponent: FC<Props> = ({
         <label className={styles["field-label"]}>Вид и номер документа</label>
         <div className={styles.fields}>
           <Field
-            className={`${styles["field-input"]} ${styles["field-input-small"]}`}
+            className={styles["field-input"]}
             name="type"
             component={TextInput}
             validate={required}
           />
           <Field
-            className={`${styles["field-input"]} ${styles["field-input-small"]}`}
+            className={styles["field-input"]}
             name="number"
             component={TextInput}
             validate={required}

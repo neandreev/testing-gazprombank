@@ -1,6 +1,6 @@
 .licenses-form {
   margin: 20px 0 48px 0;
-  width: 725px;
+  min-width: 680px;
 }
 
 .licenses-header {

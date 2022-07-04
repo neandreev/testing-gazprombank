@@ -14,10 +14,8 @@ const Layout: FC<Props> = ({ children }) => (
     <Header />
     <div className={styles.layout__flex}>
       <Sidebar />
-      <div className={styles.layout__content}>
-        {children}
-      </div>
-      <FillingInfo/>
+      <div className={styles.layout__content}>{children}</div>
+      <FillingInfo />
     </div>
   </div>
 );

@@ -8,31 +8,31 @@ const FillingInfo: FC = () => {
   const fillingStatusValues = Object.values(fillingStatus);
 
   return (
-    <div>
+    <div className={styles['filling-info']}>
       <h3 className={styles.header}>Заполнение анкеты</h3>
-    <div>
-      {fillingStatusValues.map((fillStatus, idx) => {
-        const styleStatus =
-          fillStatus.status === "complete"
-            ? styles.complete
-            : fillStatus.status === "error"
-            ? styles.error
-            : styles.filling;
+      <div>
+        {fillingStatusValues.map((fillStatus, idx) => {
+          const styleStatus =
+            fillStatus.status === "complete"
+              ? styles.complete
+              : fillStatus.status === "error"
+              ? styles.error
+              : styles.filling;
 
-        return (
-          <div key={fillStatus.name}>
-            <div className={styles.status}>
-              <div className={`${styles.icon} ${styleStatus}`}></div>
+          return (
+            <div key={fillStatus.name}>
+              <div className={styles.status}>
+                <div className={`${styles.icon} ${styleStatus}`}></div>
 
-              <span>{fillStatus.name}</span>
+                <span>{fillStatus.name}</span>
+              </div>
+              {idx !== fillingStatusValues.length - 1 ? (
+                <div className={styles.stick}></div>
+              ) : null}
             </div>
-            {idx !== fillingStatusValues.length - 1 ? (
-              <div className={styles.stick}></div>
-            ) : null}
-          </div>
-        );
-      })}
-    </div>
+          );
+        })}
+      </div>
     </div>
   );
 };

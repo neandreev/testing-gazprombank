@@ -3,7 +3,7 @@
   padding: 24px;
 
   box-sizing: border-box;
-  width: 720px;
+  min-width: 680px;
   border-radius: 8px;
 
   margin: 8px 0;

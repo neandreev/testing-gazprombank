@@ -1,5 +1,5 @@
 .layout {
-  max-width: 1280px;
+  min-width: 1240px;
 }
 
 .layout__flex {
@@ -9,5 +9,6 @@
 .layout__content {
   display: flex;
   flex-direction: column;
-  width: 847px;
+
+  flex-grow: 1;
 }

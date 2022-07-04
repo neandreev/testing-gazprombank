@@ -40,7 +40,7 @@ const DocumentsForm: FC = () => {
             validate={required}
           />
           <Field
-            className={`${styles["field-input"]} ${styles["field-input-medium"]}`}
+            className={styles["field-input"]}
             name="birthPlace"
             component={TextInput}
             validate={required}

@@ -27,7 +27,7 @@ const RegistrationForm: FC = () => {
             name="registrationNumber"
             component={TextInput}
             validate={required}
-            className={`${styles["field-input"]} ${styles["field-input-medium"]}`}
+            className={styles["field-input"]}
           />
         </div>
       </div>
