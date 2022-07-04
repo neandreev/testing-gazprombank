@@ -8,16 +8,11 @@ const FillingInfo: FC = () => {
   const fillingStatusValues = Object.values(fillingStatus);
 
   return (
-    <div className={styles['filling-info']}>
+    <div className={styles["filling-info"]}>
       <h3 className={styles.header}>Заполнение анкеты</h3>
       <div>
         {fillingStatusValues.map((fillStatus, idx) => {
-          const styleStatus =
-            fillStatus.status === "complete"
-              ? styles.complete
-              : fillStatus.status === "error"
-              ? styles.error
-              : styles.filling;
+          const styleStatus = styles[fillStatus.status];
 
           return (
             <div key={fillStatus.name}>
