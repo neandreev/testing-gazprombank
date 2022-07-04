@@ -4,7 +4,7 @@ import { ReactComponent as ButtonPlus } from "./button-plus.svg";
 import { ReactComponent as ButtonRemove } from "./button-remove.svg";
 import { ReactComponent as ButtonEdit } from "./button-edit.svg";
 
-import styles from "./Button.module.css";
+import styles from "./Button.module.scss";
 
 const EditIcon = (
   <div className={styles["icon-background"]}>

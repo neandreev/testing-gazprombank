@@ -1,3 +1,5 @@
+@use 'src/styles/_colors';
+
 .button {
   height: 36px;
   font-family: "Montserrat";
@@ -11,12 +13,12 @@
 .button-primary {
   color: #fff;
   border: none;
-  background-color: #0057b6;
+  background-color: colors.$blue;
 }
 
 .button-secondary {
   color: #0057b6;
-  border: 1px solid #d7dee9;
+  border: 1px solid colors.$lightgray;
 
   background-color: #ffffff;
 }
@@ -25,7 +27,7 @@
   color: #0057B6;
   border: none;
 
-  background-color: #F3F4F7;
+  background-color: colors.$gray;
 }
 
 .button-edit-remove-icon {
@@ -56,7 +58,7 @@
   align-items: center;
 
   background-color: #fff;
-  border: 1px solid #D7DEE9;
+  border: 1px solid colors.$lightgray;
   border-radius: 50%;
   
   width: 24px;
