@@ -20,7 +20,7 @@ const FillingInfo: FC = () => {
             : styles.filling;
 
         return (
-          <div>
+          <div key={fillStatus.name}>
             <div className={styles.status}>
               <div className={`${styles.icon} ${styleStatus}`}></div>
 
