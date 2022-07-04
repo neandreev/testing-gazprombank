@@ -18,7 +18,7 @@
 
 .button-secondary {
   color: #0057b6;
-  border: 1px solid colors.$lightgray;
+  border: 1px solid colors.$gray;
 
   background-color: #ffffff;
 }
@@ -27,7 +27,7 @@
   color: #0057B6;
   border: none;
 
-  background-color: colors.$gray;
+  background-color: colors.$lightgray;
 }
 
 .button-edit-remove-icon {
@@ -58,7 +58,7 @@
   align-items: center;
 
   background-color: #fff;
-  border: 1px solid colors.$lightgray;
+  border: 1px solid colors.$gray;
   border-radius: 50%;
   
   width: 24px;
