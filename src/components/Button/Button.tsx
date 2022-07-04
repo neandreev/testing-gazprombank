@@ -27,6 +27,13 @@ const getIcon = (icon: string) =>
     add: AddIcon,
   }[icon]);
 
+const getIconStyle = (icon: string) =>
+  ({
+    edit: styles["button-edit-remove-icon"],
+    remove: styles["button-edit-remove-icon"],
+    add: styles["button-add-icon"],
+  }[icon]);
+
 interface Props {
   text: string;
   icon?: "add" | "remove" | "edit";
@@ -34,27 +41,18 @@ interface Props {
   onClick: () => void;
 }
 
-const getButtonClassName = (icon: Props["icon"], style: Props["styling"]) => {
-  const buttonStyles = [styles.button];
-  if (style === "primary") {
-    buttonStyles.push(styles["button-primary"]);
-  } else if (style === "secondary") {
-    buttonStyles.push(styles["button-secondary"]);
-  } else {
-    buttonStyles.push(styles["button-transparent"]);
-  }
-
-  if (icon === 'edit' || icon === 'remove') buttonStyles.push(styles["button-edit-remove-icon"]);
-  if (icon === 'add') buttonStyles.push(styles["button-add-icon"]);
+const getButtonStyles = (icon: Props["icon"], styling: Props["styling"]) => {
+  const iconStyles = icon ? getIconStyle(icon) : null;
+  const buttonStyles = [styles.button, styles[`button-${styling}`], iconStyles];
 
   return buttonStyles.join(" ");
 };
 
-const Button: FC<Props> = ({ text, icon, styling: style, onClick }) => {
-  const buttonClassName = getButtonClassName(icon, style);
+const Button: FC<Props> = ({ text, icon, styling, onClick }) => {
+  const buttonStyles = getButtonStyles(icon, styling);
 
   return (
-    <button className={buttonClassName} onClick={onClick}>
+    <button className={buttonStyles} onClick={onClick}>
       {icon ? (
         <span className={styles.span}>
           <div className={styles["icon-container"]}>{getIcon(icon)}</div>
