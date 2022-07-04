@@ -1,5 +1,8 @@
 import { FC, useEffect, useState } from "react";
 import { Field, useFormState } from "react-final-form";
+
+import { required } from "../../utils/validation";
+
 import { useLicensesForms, useSetLicensesForms } from "../../context";
 
 import { LicenseI } from "../../models/License.model";
@@ -36,8 +39,6 @@ const LicenseFormComponent: FC<Props> = ({
     const newLicensesForms = [...filteredLicenses, { ...formData, id }];
     setLicensesForms(newLicensesForms)
   }, [values, touched, errors]);
-
-  const required = (value: any) => (value ? undefined : "Необходимо заполнить");
 
   return (
     <div onSubmit={handleSubmit}>

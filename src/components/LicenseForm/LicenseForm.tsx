@@ -1,6 +1,8 @@
 import { FC } from "react";
 import _omit from "lodash-es/omit";
 
+import { required } from "../../utils/validation";
+
 import { Form } from "react-final-form";
 
 import {
@@ -40,8 +42,6 @@ const LicenseForm: FC<Props> = ({ id, closeLicense, closeForm, licenseData }) =>
     setLicenses(newLicenses)
     closeForm();
   };
-
-  const required = (value: any) => (value ? undefined : "Необходимо заполнить");
 
   const validateDates = (expirationDate: string, issuanceDate: string) => {
     return {
