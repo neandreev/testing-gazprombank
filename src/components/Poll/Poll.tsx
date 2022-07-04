@@ -5,7 +5,7 @@ import SliderInput from "../SliderInput/SliderInput";
 
 import styles from "./Poll.module.scss";
 
-const AdditionalInfoForm: FC = () => {
+const Poll: FC = () => {
   return (
     <div className={styles.toggles}>
       <div className={styles.toggle}>
@@ -58,4 +58,4 @@ const AdditionalInfoForm: FC = () => {
   );
 };
 
-export default AdditionalInfoForm;
+export default Poll;

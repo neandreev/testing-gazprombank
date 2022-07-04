@@ -13,7 +13,7 @@ import {
   useSetFillingStatus,
 } from "../../context";
 
-import AdditionalInfoForm from "../Poll/Poll";
+import Poll from "../Poll/Poll";
 import Information from "../Information/Information";
 import Licenses from "../Licenses/Licenses";
 import Registration from "../Registration/Registration";
@@ -136,7 +136,7 @@ const DocumentForm: FC<Props> = ({ handleSubmit }) => {
       <Information />
       <Registration />
       <Licenses />
-      <AdditionalInfoForm />
+      <Poll />
       <Button
         styling="primary"
         onClick={handleSubmit}
