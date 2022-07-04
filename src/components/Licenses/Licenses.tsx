@@ -14,8 +14,8 @@ import Button from "../Button/Button";
 import Slider from "../Slider/Slider";
 
 const Licenses: FC = () => {
-  const licensesFormsIds = useLicensesIds();
-  const setLicensesFormsIds = useSetLicensesIds()!;
+  const licensesIds = useLicensesIds();
+  const setLicensesIds = useSetLicensesIds()!;
   const setLicenses = useSetLicenses()!;
   const setLicensesForms = useSetLicensesForms()!;
 
@@ -24,13 +24,13 @@ const Licenses: FC = () => {
   const handleToggleLicenses = (newLicensesNeeded: boolean) => {
     setLicensesForms([]);
     setLicensesNeeded(newLicensesNeeded);
-    setLicensesFormsIds([_uniqueId()]);
+    setLicensesIds([_uniqueId()]);
     setLicenses([]);
   };
 
   useEffect(() => {
-    if (licensesFormsIds.length === 0) setLicensesNeeded(false);
-  }, [licensesFormsIds]);
+    if (licensesIds.length === 0) setLicensesNeeded(false);
+  }, [licensesIds]);
 
   return (
     <div className={styles["licenses-form"]}>
@@ -46,13 +46,13 @@ const Licenses: FC = () => {
         <div>
           <h3 className={styles["licenses-header"]}>Ваши лицензии:</h3>
           <div className={styles.licenses}>
-            {licensesFormsIds?.map((id) => {
+            {licensesIds?.map((id) => {
               return <License key={id} id={id} />;
             })}
           </div>
           <Button
             onClick={() =>
-              setLicensesFormsIds([...licensesFormsIds, _uniqueId()])
+              setLicensesIds([...licensesIds, _uniqueId()])
             }
             text="Добавить ещё одну лицензию"
             styling="secondary"

@@ -45,14 +45,10 @@ export interface LicenseFormState
 }
 
 const useStore = () => {
-  const initialLicenseFormId = _uniqueId();
-
   const [licenses, setLicenses] = useState<LicenseI[]>([]);
   const [licensesForms, setLicensesForms] = useState<LicenseFormState[]>([]);
   const [data, setData] = useState<Data | null>(null);
-  const [licensesIds, setLicensesIds] = useState<string[]>([
-    initialLicenseFormId,
-  ]);
+  const [licensesIds, setLicensesIds] = useState<string[]>([_uniqueId()]);
   const [fillingStatus, setFillingStatus] =
     useState<typeof initialFillingStatus>(initialFillingStatus);
 
