@@ -19,7 +19,7 @@ const License: FC<Props> = ({ id }) => {
 
   const [licenseData, setLicenseData] = useState<LicenseI | undefined>(undefined);
 
-  const handleCloseForm = () => {
+  const handleCloseLicense = () => {
     const newLicencesIds = licensesIds.filter((licenseId) => id !== licenseId);
     setLicensesIds(newLicencesIds);
     setIsForm(false);
@@ -38,8 +38,8 @@ const License: FC<Props> = ({ id }) => {
         <LicenseForm
           id={id}
           licenseData={licenseData}
-          closeForm={handleCloseForm}
-          changeForm={() => setIsForm(false)}
+          closeLicense={handleCloseLicense}
+          closeForm={() => setIsForm(false)}
         />
       ) : (
         <FilledLicense id={id} openForm={handleOpenForm} />

@@ -1,36 +1,44 @@
 import { FC } from "react";
-import _uniqBy from "lodash-es/uniqBy";
 import _omit from "lodash-es/omit";
 
 import { Form } from "react-final-form";
 
-import { useLicenses, useLicensesForms, useSetLicenses, useSetLicensesForms } from "../../context";
+import {
+  useLicenses,
+  useLicensesForms,
+  useSetLicenses,
+  useSetLicensesForms,
+} from "../../context";
 import { LicenseI } from "../../models/License.model";
 
 import LicenseFormComponent from "../LicenseFormComponent/LicenseFormConponent";
 
 interface Props {
   id: string;
+  closeLicense: () => void;
   closeForm: () => void;
-  changeForm: () => void;
   licenseData?: LicenseI;
 }
 
-const LicenseForm: FC<Props> = ({ id, closeForm, changeForm, licenseData }) => {
+const LicenseForm: FC<Props> = ({ id, closeLicense, closeForm, licenseData }) => {
   const licenses = useLicenses();
   const setLicenses = useSetLicenses()!;
   const licensesForms = useLicensesForms();
   const setLicensesForms = useSetLicensesForms()!;
 
-  const handleSubmit = (values: any) => {
+  const handleSubmit = (values: Omit<LicenseI, "id">) => {
+    const licenseWithId = { id, ...values };
     const newLicense = !values.isPermanent
-      ? { id, ...values }
-      : _omit({ id, ...values }, ["issuanceDate", "expirationDate"]);
-    const newLicensesForms = licensesForms.filter((licenseForm) => licenseForm.id !== id);
+      ? licenseWithId
+      : _omit(licenseWithId, ["issuanceDate", "expirationDate"]);
+    const newLicensesForms = licensesForms.filter(
+      (licenseForm) => licenseForm.id !== id
+    );
+    const newLicenses = [...licenses, newLicense];
 
     setLicensesForms(newLicensesForms);
-    setLicenses(_uniqBy([...licenses, newLicense], "id"));
-    changeForm();
+    setLicenses(newLicenses)
+    closeForm();
   };
 
   const required = (value: any) => (value ? undefined : "Необходимо заполнить");
@@ -48,7 +56,7 @@ const LicenseForm: FC<Props> = ({ id, closeForm, changeForm, licenseData }) => {
       initialValues={licenseData}
       validate={(values) => {
         if (!values.isPermanent) {
-          return validateDates(values.expirationDate, values.issuanceDate);
+          return validateDates(values.expirationDate!, values.issuanceDate!);
         } else {
           return {};
         }
@@ -58,7 +66,7 @@ const LicenseForm: FC<Props> = ({ id, closeForm, changeForm, licenseData }) => {
           <LicenseFormComponent
             handleSubmit={handleSubmit}
             licenseData={licenseData}
-            closeForm={closeForm}
+            closeLicense={closeLicense}
             id={id}
           />
         );

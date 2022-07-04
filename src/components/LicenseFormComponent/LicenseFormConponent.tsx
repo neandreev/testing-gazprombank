@@ -12,7 +12,7 @@ import styles from "./LicenseFormComponent.module.scss";
 
 interface Props {
   handleSubmit: () => void;
-  closeForm: () => void;
+  closeLicense: () => void;
   licenseData?: LicenseI;
   id: string;
 }
@@ -20,7 +20,7 @@ interface Props {
 const LicenseFormComponent: FC<Props> = ({
   handleSubmit,
   licenseData,
-  closeForm,
+  closeLicense,
   id
 }) => {
   const formData = useFormState();
@@ -127,7 +127,7 @@ const LicenseFormComponent: FC<Props> = ({
         styling="primary"
       />
       <Button
-        onClick={() => closeForm()}
+        onClick={() => closeLicense()}
         text="Отменить"
         styling="secondary"
       />
