@@ -5,7 +5,7 @@ import _omit from "lodash-es/omit";
 import { Form } from "react-final-form";
 
 import { useLicenses, useLicensesForms, useSetLicenses, useSetLicensesForms } from "../../context";
-import { License } from "../../models/License.model";
+import { LicenseI } from "../../models/License.model";
 
 import LicenseFormComponent from "../LicenseFormComponent/LicenseFormConponent";
 
@@ -13,7 +13,7 @@ interface Props {
   id: string;
   closeForm: () => void;
   changeForm: () => void;
-  licenseData?: License;
+  licenseData?: LicenseI;
 }
 
 const LicenseForm: FC<Props> = ({ id, closeForm, changeForm, licenseData }) => {

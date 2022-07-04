@@ -2,7 +2,7 @@ import { FC, useEffect, useState } from "react";
 import { Field, useFormState } from "react-final-form";
 import { useLicensesForms, useSetLicensesForms } from "../../context";
 
-import { License } from "../../models/License.model";
+import { LicenseI } from "../../models/License.model";
 
 import Button from "../Button/Button";
 import DateInput from "../DateInput/DateInput";
@@ -13,7 +13,7 @@ import styles from "./LicenseFormComponent.module.scss";
 interface Props {
   handleSubmit: () => void;
   closeForm: () => void;
-  licenseData?: License;
+  licenseData?: LicenseI;
   id: string;
 }
 

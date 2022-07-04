@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { FieldRenderProps } from "react-final-form";
 
-import styles from "./ToggleFormInput.module.scss";
+import styles from "./SliderInput.module.scss";
 
 type Props = FieldRenderProps<string, any>;
 
-const ToggleFormInput: FC<Props> = ({ input, meta, ...rest }) => {
+const SliderInput: FC<Props> = ({ input, meta, ...rest }) => {
   return (
     <label className={styles.switch}>
       <input type="checkbox" {...input} {...rest} />
@@ -14,4 +14,4 @@ const ToggleFormInput: FC<Props> = ({ input, meta, ...rest }) => {
   );
 };
 
-export default ToggleFormInput;
+export default SliderInput;

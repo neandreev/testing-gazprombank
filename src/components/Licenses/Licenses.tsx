@@ -1,7 +1,7 @@
 import { FC, useEffect, useState } from "react";
 import _uniqueId from "lodash-es/uniqueId";
 
-import LicenseElement from "../LicenseElement/LicenseElement";
+import License from "../License/License";
 import {
   useLicensesIds,
   useSetLicenses,
@@ -9,11 +9,11 @@ import {
   useSetLicensesIds,
 } from "../../context";
 
-import styles from "./LicensesForm.module.scss";
+import styles from "./Licenses.module.scss";
 import Button from "../Button/Button";
-import ToggleInput from "../ToggleInput/ToggleInput";
+import Slider from "../Slider/Slider";
 
-const LicensesForm: FC = () => {
+const Licenses: FC = () => {
   const licensesFormsIds = useLicensesIds();
   const setLicensesFormsIds = useSetLicensesIds()!;
   const setLicenses = useSetLicenses()!;
@@ -40,14 +40,14 @@ const LicensesForm: FC = () => {
           <div>лицензированию</div>
           <div>в соответствии с законодательством РФ</div>
         </h2>
-        <ToggleInput onClick={() => handleToggleLicenses(!licensesNeeded)} checked={licensesNeeded} />
+        <Slider onClick={() => handleToggleLicenses(!licensesNeeded)} checked={licensesNeeded} />
       </div>
       {licensesNeeded && (
         <div>
           <h3 className={styles["licenses-header"]}>Ваши лицензии:</h3>
           <div className={styles.licenses}>
             {licensesFormsIds?.map((id) => {
-              return <LicenseElement key={id} id={id} />;
+              return <License key={id} id={id} />;
             })}
           </div>
           <Button
@@ -64,4 +64,4 @@ const LicensesForm: FC = () => {
   );
 };
 
-export default LicensesForm;
+export default Licenses;

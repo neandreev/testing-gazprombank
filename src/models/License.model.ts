@@ -1,4 +1,4 @@
-export interface License {
+export interface LicenseI {
   id: string,
   type: string,
   number: string,

@@ -1,13 +1,13 @@
 import { FC } from "react";
 
-import styles from "./ToggleInput.module.scss";
+import styles from "./Slider.module.scss";
 
 interface Props {
   onClick: () => void;
   checked: boolean;
 }
 
-const ToggleInput: FC<Props> = ({ onClick, checked }) => {
+const Slider: FC<Props> = ({ onClick, checked }) => {
   return (
     <label className={styles.switch}>
       <input type="checkbox" onChange={onClick} checked={checked} />
@@ -16,4 +16,4 @@ const ToggleInput: FC<Props> = ({ onClick, checked }) => {
   );
 };
 
-export default ToggleInput;
+export default Slider;

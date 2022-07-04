@@ -6,7 +6,7 @@ import {
   useLicensesIds,
   useSetLicensesIds,
 } from "../../context";
-import { License } from "../../models/License.model";
+import { LicenseI } from "../../models/License.model";
 import Button from "../Button/Button";
 
 import styles from "./FilledLicense.module.scss";
@@ -16,7 +16,7 @@ interface Props {
   openForm: (license: any) => void;
 }
 
-const getLicenseDates = (license: License) => {
+const getLicenseDates = (license: LicenseI) => {
   return `${license.issuanceDate} - ${license.issuanceDate}`;
 };
 

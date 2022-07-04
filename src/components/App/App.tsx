@@ -1,7 +1,7 @@
 import { FC, useState } from "react";
 
 import Layout from "../Layout/Layout";
-import DocumentForm from "../DocumentForm/DocumentForm";
+import Form from "../Form/Form";
 import Modal from "../Modal/Modal";
 
 const App: FC = () => {
@@ -10,7 +10,7 @@ const App: FC = () => {
   return (
     <>
       <Layout>
-        <DocumentForm openModal={() => setIsModalOpen(true)} />
+        <Form openModal={() => setIsModalOpen(true)} />
       </Layout>
       {isModalOpen && <Modal />}
     </>

@@ -4,9 +4,9 @@ import { Field } from "react-final-form";
 import DateInput from "../DateInput/DateInput";
 import TextInput from "../TextInput/TextInput";
 
-import styles from "./RegistrationForm.module.scss";
+import styles from "./Registration.module.scss";
 
-const RegistrationForm: FC = () => {
+const Registration: FC = () => {
   const required = (value: any) => (value ? undefined : "Необходимо заполнить");
 
   return (
@@ -44,4 +44,4 @@ const RegistrationForm: FC = () => {
   );
 };
 
-export default RegistrationForm;
+export default Registration;

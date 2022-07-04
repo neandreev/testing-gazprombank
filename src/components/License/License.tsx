@@ -1,23 +1,23 @@
 import { FC, useState } from "react";
 import { useLicenses, useLicensesIds, useSetLicenses, useSetLicensesIds } from "../../context";
-import { License } from "../../models/License.model";
+import { LicenseI } from "../../models/License.model";
 import FilledLicense from "../FilledLicense/FilledLicense";
 import LicenseForm from "../LicenseForm/LicenseForm";
 
-import styles from "./LicenseElement.module.scss";
+import styles from "./License.module.scss";
 
 interface Props {
   id: string;
 }
 
-const LicenseElement: FC<Props> = ({ id }) => {
+const License: FC<Props> = ({ id }) => {
   const licenses = useLicenses();
   const setLicenses = useSetLicenses()!;
   const licensesIds = useLicensesIds();
   const setLicensesIds = useSetLicensesIds()!;
   const [isForm, setIsForm] = useState(true);
 
-  const [licenseData, setLicenseData] = useState<License | undefined>(undefined);
+  const [licenseData, setLicenseData] = useState<LicenseI | undefined>(undefined);
 
   const handleCloseForm = () => {
     const newLicencesIds = licensesIds.filter((licenseId) => id !== licenseId);
@@ -25,7 +25,7 @@ const LicenseElement: FC<Props> = ({ id }) => {
     setIsForm(false);
   };
 
-  const handleOpenForm = (license: License) => {
+  const handleOpenForm = (license: LicenseI) => {
     setLicenseData(license);
     const newLicenses = licenses.filter((license) => id !== license.id)
     setLicenses(newLicenses);
@@ -48,4 +48,4 @@ const LicenseElement: FC<Props> = ({ id }) => {
   );
 };
 
-export default LicenseElement;
+export default License;

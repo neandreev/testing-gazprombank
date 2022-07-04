@@ -1,9 +1,9 @@
 import { FC } from "react";
 import { Field } from "react-final-form";
 
-import ToggleFormInput from "../ToggleFormInput/ToggleFormInput";
+import SliderInput from "../SliderInput/SliderInput";
 
-import styles from "./AdditionalInfoForm.module.scss";
+import styles from "./Poll.module.scss";
 
 const AdditionalInfoForm: FC = () => {
   return (
@@ -14,7 +14,7 @@ const AdditionalInfoForm: FC = () => {
         </h3>
         <Field
           name="isProvidingInternet"
-          component={ToggleFormInput}
+          component={SliderInput}
           type="checkbox"
         />
       </div>
@@ -24,7 +24,7 @@ const AdditionalInfoForm: FC = () => {
         </h3>
         <Field
           name="isPublicOfficial"
-          component={ToggleFormInput}
+          component={SliderInput}
           type="checkbox"
         />
       </div>
@@ -32,7 +32,7 @@ const AdditionalInfoForm: FC = () => {
         <h3 className={styles["toggle-label"]}>Наличие выгодоприобретателей</h3>
         <Field
           name="haveBeneficiaries"
-          component={ToggleFormInput}
+          component={SliderInput}
           type="checkbox"
         />
       </div>
@@ -40,7 +40,7 @@ const AdditionalInfoForm: FC = () => {
         <h3 className={styles["toggle-label"]}>Наличие представителей</h3>
         <Field
           name="haveRepresentatives"
-          component={ToggleFormInput}
+          component={SliderInput}
           type="checkbox"
         />
       </div>
@@ -50,7 +50,7 @@ const AdditionalInfoForm: FC = () => {
         </h3>
         <Field
           name="haveBeneficialOwner"
-          component={ToggleFormInput}
+          component={SliderInput}
           type="checkbox"
         />
       </div>

@@ -1,4 +1,4 @@
-import { License } from "./License.model";
+import { LicenseI } from "./License.model";
 
 export interface Data {
   identificationNumber: string;
@@ -14,7 +14,7 @@ export interface Data {
   registrationNumber: string;
   registrationPlace: string;
 
-  licenses: License[];
+  licenses: LicenseI[];
 
   isProvidingInternet: boolean;
   isPublicOfficial: boolean;

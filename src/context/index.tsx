@@ -2,7 +2,7 @@ import React, { useState, createContext, useContext, FC } from "react";
 import _find from "lodash-es/find";
 import _uniqueId from "lodash-es/uniqueId";
 
-import { License } from "../models/License.model";
+import { LicenseI } from "../models/License.model";
 import { Data } from "../models/Data.model";
 import { FormState } from "final-form";
 
@@ -47,7 +47,7 @@ export interface LicenseFormState
 const useStore = () => {
   const initialLicenseFormId = _uniqueId();
 
-  const [licenses, setLicenses] = useState<License[]>([]);
+  const [licenses, setLicenses] = useState<LicenseI[]>([]);
   const [licensesForms, setLicensesForms] = useState<LicenseFormState[]>([]);
   const [data, setData] = useState<Data | null>(null);
   const [licensesIds, setLicensesIds] = useState<string[]>([
@@ -85,7 +85,7 @@ export const StoreContextProvider: FC<Props> = ({ children }) => {
 };
 
 export const useLicenses = () =>
-  useContext(StoreContext)?.licenses as License[];
+  useContext(StoreContext)?.licenses as LicenseI[];
 export const useLicensesForms = () =>
   useContext(StoreContext)?.licensesForms as LicenseFormState[];
 export const useLicensesIds = () =>
