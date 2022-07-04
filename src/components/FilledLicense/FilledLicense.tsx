@@ -65,14 +65,6 @@ const FilledLicense: FC<Props> = ({ id, openForm }) => {
       </div>
       <Button styling="transparent" icon="edit" onClick={() => openForm(license)} text="Редактировать" />
       <Button styling="transparent" icon="remove" onClick={handleRemoveLicense} text="Удалить" />
-      {/* <button
-        onClick={() => {
-          openForm(license);
-        }}
-      >
-        Редактировать
-      </button>
-      <button onClick={handleRemoveLicense}>Удалить</button> */}
     </div>
   );
 };

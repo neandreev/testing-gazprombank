@@ -29,16 +29,11 @@
 }
 
 .button-edit-remove-icon {
-  /* padding: 6px 12px 6px 16px; */
   padding: 6px 10px 6px 1px;
 }
 
 .button-add-icon {
   padding: 6px 16px 6px 16px;
-}
-
-.icon {
-  /* margin-right: 12.75px; */
 }
 
 .icon-container {
@@ -47,9 +42,6 @@
   align-items: center;
 
   margin-right: 12.75px;
-
-  /* width: 24px;
-  height: 24px; */
 }
 
 .span {

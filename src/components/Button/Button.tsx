@@ -46,7 +46,7 @@ const getButtonClassName = (icon: Props["icon"], style: Props["styling"]) => {
 
   if (icon === 'edit' || icon === 'remove') buttonStyles.push(styles["button-edit-remove-icon"]);
   if (icon === 'add') buttonStyles.push(styles["button-add-icon"]);
-  // if (icon) buttonStyles.push(styles["button-with-icon"]);
+
   return buttonStyles.join(" ");
 };
 

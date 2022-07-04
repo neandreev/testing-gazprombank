@@ -1,84 +1,15 @@
-import { FC, useEffect } from "react";
-import { Field, useFormState } from "react-final-form";
-import {
-  FillingStatus,
-  useFillingStatus,
-  useSetFillingStatus,
-} from "../../context";
+import { FC } from "react";
+import { Field } from "react-final-form";
 
 import DateInput from "../DateInput/DateInput";
 import TextInput from "../TextInput/TextInput";
 
 import styles from "./DocumentsForm.module.css";
 
-const validateFillingInfo = (
-  formState: any,
-  fillingStatus: FillingStatus,
-  setFillingStatus: ReturnType<typeof useSetFillingStatus>
-) => {
-  const infoValidationValues = fillingStatus.information.fields;
-  const isRegistrationTouched = fillingStatus.registration.fields.some(
-    (field) => {
-      return formState.touched[field];
-    }
-  );
-
-  const isInfoComplete = infoValidationValues.every((field) => {
-    return !formState.errors[field] && formState.values[field];
-    // && formState.touched[field];
-  });
-
-  console.log("EDITING DOCUMENTS STATUS")
-
-
-  const isInfoInvalid = infoValidationValues.some((field) => {
-    return formState.errors[field] && formState.touched[field];
-  }) || (isRegistrationTouched && !isInfoComplete);
-
-  if (isInfoComplete) {
-    setFillingStatus!({
-      ...fillingStatus,
-      information: { ...fillingStatus.information, status: "complete" },
-    });
-  } else if (isInfoInvalid) {
-    setFillingStatus!({
-      ...fillingStatus,
-      information: { ...fillingStatus.information, status: "error" },
-    });
-  } else {
-    setFillingStatus!({
-      ...fillingStatus,
-      information: { ...fillingStatus.information, status: "filling" },
-    });
-  }
-
-  console.log(fillingStatus);
-};
-
 const DocumentsForm: FC = () => {
-  const formState = useFormState();
-  const { values, errors, touched } = formState;
-  const fillingStatus = useFillingStatus();
-  const setFillingStatus = useSetFillingStatus()!;
-
-  // useEffect(() => {
-  //   console.log("FORM DATA", formValue.values);
-  // }, [formValue])
-
-  // const handleSubmit = (values: any) => {
-  //   console.log(values);
-  // };
-
-  // useEffect(() => {
-  //   validateFillingInfo(formState, fillingStatus, setFillingStatus);
-  // }, [values, errors, touched]);
-
   const required = (value: any) => (value ? undefined : "Необходимо заполнить");
 
   return (
-    // <Form
-    //   onSubmit={handleSubmit}
-    //   render={({ handleSubmit }) => (
     <div className={styles["documents-form"]}>
       <h2 className={styles["form-header"]}>Общая информация</h2>
       <div className={styles.field}>
@@ -155,8 +86,6 @@ const DocumentsForm: FC = () => {
         />
       </div>
     </div>
-    //   )}
-    // />
   );
 };
 

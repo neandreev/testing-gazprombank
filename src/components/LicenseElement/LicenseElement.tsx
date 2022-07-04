@@ -42,7 +42,6 @@ const LicenseElement: FC<Props> = ({ id }) => {
           changeForm={() => setIsForm(false)}
         />
       ) : (
-        // <FilledLicense id={id} openForm={() => setIsForm(true)} />
         <FilledLicense id={id} openForm={handleOpenForm} />
       )}
     </div>

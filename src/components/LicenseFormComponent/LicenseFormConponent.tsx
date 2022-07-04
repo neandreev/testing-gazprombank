@@ -1,4 +1,4 @@
-import { FC, useCallback, useEffect, useState } from "react";
+import { FC, useEffect, useState } from "react";
 import { Field, useFormState } from "react-final-form";
 import { useLicensesForms, useSetLicensesForms } from "../../context";
 
@@ -38,13 +38,6 @@ const LicenseFormComponent: FC<Props> = ({
   }, [values, touched, errors]);
 
   const required = (value: any) => (value ? undefined : "Необходимо заполнить");
-  const dateRequired = useCallback(
-    (value: any) => {
-      return formData.values["isPermanent"] ? undefined : required(value);
-      // return formData.values["isPermanent"] ? undefined : required(value);
-    },
-    [formData]
-  );
 
   return (
     <div onSubmit={handleSubmit}>
@@ -98,14 +91,12 @@ const LicenseFormComponent: FC<Props> = ({
                 name="issuanceDate"
                 component={DateInput}
                 disabled={togglePermanent}
-                // validate={dateRequired}
               />
               <Field
                 className={`${styles["field-input"]} ${styles["field-date"]}`}
                 name="expirationDate"
                 component={DateInput}
                 disabled={togglePermanent}
-                // validate={dateRequired}
               />
             </div>
             <div className={styles.permanent}>
@@ -134,13 +125,11 @@ const LicenseFormComponent: FC<Props> = ({
         onClick={handleSubmit}
         text="Добавить"
         styling="primary"
-        // icon={false}
       />
       <Button
         onClick={() => closeForm()}
         text="Отменить"
         styling="secondary"
-        // icon={false}
       />
     </div>
   );

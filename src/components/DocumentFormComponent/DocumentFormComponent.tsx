@@ -1,5 +1,5 @@
-import { FC, useCallback, useEffect, useState } from "react";
-import { Form, useFormState } from "react-final-form";
+import { FC, useEffect } from "react";
+import { useFormState } from "react-final-form";
 
 import { Data } from "../../models/Data.model";
 
@@ -9,9 +9,7 @@ import {
   FillingStatus,
   LicenseFormState,
   useFillingStatus,
-  useLicenses,
   useLicensesForms,
-  useSetData,
   useSetFillingStatus,
 } from "../../context";
 
@@ -25,20 +23,8 @@ import styles from "./DocumentFormComponent.module.css";
 
 type Props = FormRenderProps<Omit<Data, "licenses">, any>;
 
-const required = (value: any) => (value ? undefined : "Необходимо заполнить");
-
 const validateDates = (licenseForm: LicenseFormState, dates: string[]) => {
-  // return {
-  //   expirationDate: required(expirationDate),
-  //   issuanceDate: required(issuanceDate),
-  // };
   return dates.some((date) => {
-    console.log("date error", licenseForm.errors?.[date]);
-    console.log("date touched", licenseForm.touched?.[date]);
-    console.log(
-      "date valid",
-      licenseForm.errors?.[date] && licenseForm.touched?.[date]
-    );
     return licenseForm.errors?.[date] && licenseForm.touched?.[date];
   });
 };
@@ -64,7 +50,6 @@ const validateFillingInfo = (
 
   const isInfoComplete = infoValidationValues.every((field) => {
     return !formState.errors[field] && formState.values[field];
-    // && formState.touched[field];
   });
 
   const isInfoInvalid =
@@ -88,19 +73,13 @@ const validateFillingInfo = (
     fillingStatus.registration.status === "complete" &&
     fillingStatus.information.status === "complete";
 
-  console.log("LICENSES FORMS", licensesForms);
-  console.log("FORM VALUES", formState.values);
-
   const isLicensesInvalid = licensesForms.some((licenseForm) => {
-    // if (Object.keys(licenseForm.values).length === 0) return false;
-    console.log("LICENSE FORM VALUES", licenseForm.values);
     const licenseFields = fillingStatus.licenses.fields;
-    const { isPermanent, issuanceDate, expirationDate } = licenseForm.values;
+    const { isPermanent } = licenseForm.values;
     const isDateInvalid = !isPermanent
       ? validateDates(licenseForm, ["issuanceDate", "expirationDate"])
       : false;
 
-    console.log("IS DATE INVALID", isDateInvalid);
     return (
       licenseFields.some((licenseField) => {
         const error = licenseForm.errors?.[licenseField];
@@ -109,8 +88,6 @@ const validateFillingInfo = (
       }) || isDateInvalid
     );
   });
-
-  console.log("IS LICENSE INVALID", isLicensesInvalid);
 
   const infoStatus = isInfoComplete
     ? "complete"
@@ -129,23 +106,6 @@ const validateFillingInfo = (
     : "filling";
   const pollStatus = isPollComplete ? "complete" : "filling";
 
-  // if (isInfoComplete) {
-  //   setFillingStatus!({
-  //     ...fillingStatus,
-  //     information: { ...fillingStatus.information, status: "complete" },
-  //   });
-  // } else if (isInfoInvalid) {
-  //   setFillingStatus!({
-  //     ...fillingStatus,
-  //     information: { ...fillingStatus.information, status: "error" },
-  //   });
-  // } else {
-  //   setFillingStatus!({
-  //     ...fillingStatus,
-  //     information: { ...fillingStatus.information, status: "filling" },
-  //   });
-  // }
-
   setFillingStatus!({
     ...fillingStatus,
     information: { ...fillingStatus.information, status: infoStatus },
@@ -153,8 +113,6 @@ const validateFillingInfo = (
     licenses: { ...fillingStatus.licenses, status: licensesStatus },
     poll: { ...fillingStatus.poll, status: pollStatus },
   });
-
-  console.log(fillingStatus);
 };
 
 const DocumentFormComponent: FC<Props> = ({ handleSubmit }) => {
@@ -184,7 +142,6 @@ const DocumentFormComponent: FC<Props> = ({ handleSubmit }) => {
         onClick={handleSubmit}
         text="Перейти к формированию документов"
       />
-      {/* <button onClick={handleSubmit}>Отправить</button> */}
     </form>
   );
 };
