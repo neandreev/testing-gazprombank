@@ -21,12 +21,22 @@ import Button from "../Button/Button";
 
 import styles from "./DocumentForm.module.scss";
 
-type Props = FormRenderProps<Omit<Data, "licenses">, any>;
+const getFillingStatus = (isComplete: boolean, isInvalid: boolean) => {
+  if (isComplete) return "complete";
+  if (isInvalid) return "error";
+  return "filling";
+};
 
-const validateDates = (licenseForm: LicenseFormState, dates: string[]) => {
-  return dates.some((date) => {
-    return licenseForm.errors?.[date] && licenseForm.touched?.[date];
-  });
+const isFieldValid = (formState: any, field: string) =>
+  !formState.errors[field] && formState.values[field];
+
+const isFieldInvalid = (formState: any, field: string) =>
+  formState.errors[field] && formState.touched[field];
+
+const isAnyDateInvalid = (licenseForm: LicenseFormState) => {
+  return ["issuanceDate", "expirationDate"].some((date) =>
+    isFieldInvalid(licenseForm, date)
+  );
 };
 
 const validateFillingInfo = (
@@ -35,85 +45,75 @@ const validateFillingInfo = (
   setFillingStatus: ReturnType<typeof useSetFillingStatus>,
   licensesForms: ReturnType<typeof useLicensesForms>
 ) => {
-  const infoValidationValues = fillingStatus.information.fields;
+  const informationFields = fillingStatus.information.fields;
+  const registrationFields = fillingStatus.registration.fields;
+  const licenseFields = fillingStatus.licenses.fields;
+
   const isRegistrationTouched = fillingStatus.registration.fields.some(
     (field) => {
       return formState.touched[field];
     }
   );
-
   const isLicensesTouched = licensesForms.some((licenseForm) => {
     return fillingStatus.licenses.fields.some((licenseField) => {
       return licenseForm.touched?.[licenseField];
     });
   });
 
-  const isInfoComplete = infoValidationValues.every((field) => {
-    return !formState.errors[field] && formState.values[field];
-  });
+  const isInformationValid = informationFields.every((field) =>
+    isFieldValid(formState, field)
+  );
+  const isInformationInvalid =
+    informationFields.some((field) => isFieldInvalid(formState, field)) ||
+    ((isRegistrationTouched || isLicensesTouched) && !isInformationValid);
 
-  const isInfoInvalid =
-    infoValidationValues.some((field) => {
-      return formState.errors[field] && formState.touched[field];
-    }) ||
-    ((isRegistrationTouched || isLicensesTouched) && !isInfoComplete);
-
-  const registrationValidationValues = fillingStatus.registration.fields;
-
+  const isRegistrationValid = registrationFields.every((field) =>
+    isFieldValid(formState, field)
+  );
   const isRegistrationInvalid =
-    registrationValidationValues.some((field) => {
-      return formState.errors[field] && formState.touched[field];
-    }) ||
-    (isLicensesTouched && !isInfoComplete);
-  const isRegistrationComplete = registrationValidationValues.every((field) => {
-    return !formState.errors[field] && formState.values[field];
-  });
+    registrationFields.some((field) => isFieldInvalid(formState, field)) ||
+    (isLicensesTouched && !isInformationValid);
 
-  const isPollComplete =
-    fillingStatus.registration.status === "complete" &&
-    fillingStatus.information.status === "complete";
-
-  const isLicensesInvalid = licensesForms.some((licenseForm) => {
-    const licenseFields = fillingStatus.licenses.fields;
+  const isEachLicenseValid = licensesForms.length === 0;
+  const isAnyLicenseInvalid = licensesForms.some((licenseForm) => {
     const { isPermanent } = licenseForm.values;
-    const isDateInvalid = !isPermanent
-      ? validateDates(licenseForm, ["issuanceDate", "expirationDate"])
-      : false;
+    const isDateInvalid = !isPermanent ? isAnyDateInvalid(licenseForm) : false;
 
     return (
-      licenseFields.some((licenseField) => {
-        const error = licenseForm.errors?.[licenseField];
-        const touched = licenseForm.touched?.[licenseField];
-        return error && touched;
-      }) || isDateInvalid
+      licenseFields.some((licenseField) =>
+        isFieldInvalid(licenseForm, licenseField)
+      ) || isDateInvalid
     );
   });
 
-  const infoStatus = isInfoComplete
-    ? "complete"
-    : isInfoInvalid
-    ? "error"
-    : "filling";
-  const registrationStatus = isRegistrationComplete
-    ? "complete"
-    : isRegistrationInvalid
-    ? "error"
-    : "filling";
-  const licensesStatus = isLicensesInvalid
-    ? "error"
-    : licensesForms.length === 0
-    ? "complete"
-    : "filling";
-  const pollStatus = isPollComplete ? "complete" : "filling";
+  const informationStatus = getFillingStatus(
+    isInformationValid,
+    isInformationInvalid
+  );
+  const registrationStatus = getFillingStatus(
+    isRegistrationValid,
+    isRegistrationInvalid
+  );
+  const licensesStatus = getFillingStatus(
+    isEachLicenseValid,
+    isAnyLicenseInvalid
+  );
+
+  const isPollValid =
+    informationStatus === "complete" &&
+    registrationStatus === "complete" &&
+    licensesStatus === "complete";
+  const pollStatus = isPollValid ? "complete" : "filling";
 
   setFillingStatus!({
-    ...fillingStatus,
-    information: { ...fillingStatus.information, status: infoStatus },
+    information: { ...fillingStatus.information, status: informationStatus },
     registration: { ...fillingStatus.registration, status: registrationStatus },
     licenses: { ...fillingStatus.licenses, status: licensesStatus },
     poll: { ...fillingStatus.poll, status: pollStatus },
   });
 };
+
+type Props = FormRenderProps<Omit<Data, "licenses">, any>;
 
 const DocumentForm: FC<Props> = ({ handleSubmit }) => {
   const formState = useFormState();
