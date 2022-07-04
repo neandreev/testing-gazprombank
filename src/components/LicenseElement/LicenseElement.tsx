@@ -4,7 +4,7 @@ import { License } from "../../models/License.model";
 import FilledLicense from "../FilledLicense/FilledLicense";
 import LicenseForm from "../LicenseForm/LicenseForm";
 
-import styles from "./LicenseElement.module.css";
+import styles from "./LicenseElement.module.scss";
 
 interface Props {
   id: string;

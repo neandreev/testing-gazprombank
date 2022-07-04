@@ -19,7 +19,7 @@ import LicensesForm from "../LicensesForm/LicensesForm";
 import RegistrationForm from "../RegistrationForm/RegistrationForm";
 import Button from "../Button/Button";
 
-import styles from "./DocumentFormComponent.module.css";
+import styles from "./DocumentFormComponent.module.scss";
 
 type Props = FormRenderProps<Omit<Data, "licenses">, any>;
 

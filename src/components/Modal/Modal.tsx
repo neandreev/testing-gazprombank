@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useData } from "../../context";
 
-import styles from "./Modal.module.css";
+import styles from "./Modal.module.scss";
 
 const Modal: FC = () => {
   const data = useData();

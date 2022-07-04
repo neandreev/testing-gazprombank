@@ -1,3 +1,5 @@
+@use 'src/styles/_colors';
+
 .profile {
   display: flex;
   align-items: center;
@@ -9,12 +11,12 @@
   display: flex;
   align-items: center;
 
-  color: #262C40;
+  color: colors.$black;
   text-decoration: none;
 }
 
 .user-link:visited {
-  color: #262C40;
+  color: colors.$black;
 }
 
 .user-link > * {

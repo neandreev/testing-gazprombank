@@ -3,7 +3,7 @@ import FillingInfo from "../FillingInfo/FillingInfo";
 import Header from "../Header/Header";
 import Sidebar from "../Sidebar/Sidebar";
 
-import styles from "./Layout.module.css";
+import styles from "./Layout.module.scss";
 
 interface Props {
   children: React.ReactNode;

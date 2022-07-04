@@ -1,6 +1,6 @@
 import { FC } from "react";
 
-import styles from "./ToggleInput.module.css";
+import styles from "./ToggleInput.module.scss";
 
 interface Props {
   onClick: () => void;

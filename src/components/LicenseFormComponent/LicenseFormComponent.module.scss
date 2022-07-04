@@ -1,3 +1,5 @@
+@use 'src/styles/_colors';
+
 .form-header {
   font-size: 16px;
   line-height: 20px;
@@ -40,7 +42,7 @@
   width: 174px;
   margin-right: 12px;
 
-  color: #262c40;
+  color: colors.$black;
 
   font-size: 14px;
   line-height: 16px;
@@ -50,7 +52,7 @@
   box-sizing: border-box;
 
   width: 100%;
-  border: 1px solid #d7dee9;
+  border: 1px solid colors.$gray;
   border-radius: 8px;
   height: 32px;
 }

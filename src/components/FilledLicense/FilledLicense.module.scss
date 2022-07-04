@@ -1,3 +1,5 @@
+@use "src/styles/_colors";
+
 .license-header {
   margin: 0;
   margin-bottom: 22px;
@@ -15,7 +17,7 @@
 .license-data-label {
   font-size: 14px;
 
-  color: #262c40;
+  color: colors.$black;
   opacity: 0.7;
   margin-right: 12px;
   width: 174px;
@@ -26,7 +28,7 @@
 .license-data-value {
   margin: 0;
 
-  color: #262c40;
+  color: colors.$black;
   max-width: 464px;
   word-break: break-word;
 }

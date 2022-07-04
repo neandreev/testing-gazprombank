@@ -1,3 +1,5 @@
+@use 'src/styles/_colors';
+
 .filling-info {
   margin-right: 90px;
   margin-left: 90px;
@@ -28,7 +30,7 @@
 }
 
 .filling {
-  background-color: gray;
+  background-color: colors.$gray;
 }
 
 .error {
@@ -36,7 +38,7 @@
 }
 
 .complete {
-  background-color: #239c3d;
+  background-color: colors.$green;
 }
 
 .stick {

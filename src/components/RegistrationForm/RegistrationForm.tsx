@@ -4,7 +4,7 @@ import { Field } from "react-final-form";
 import DateInput from "../DateInput/DateInput";
 import TextInput from "../TextInput/TextInput";
 
-import styles from "./RegistrationForm.module.css";
+import styles from "./RegistrationForm.module.scss";
 
 const RegistrationForm: FC = () => {
   const required = (value: any) => (value ? undefined : "Необходимо заполнить");

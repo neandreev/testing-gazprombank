@@ -4,7 +4,7 @@ import { Field } from "react-final-form";
 import DateInput from "../DateInput/DateInput";
 import TextInput from "../TextInput/TextInput";
 
-import styles from "./DocumentsForm.module.css";
+import styles from "./DocumentsForm.module.scss";
 
 const DocumentsForm: FC = () => {
   const required = (value: any) => (value ? undefined : "Необходимо заполнить");

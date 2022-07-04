@@ -9,7 +9,7 @@ import {
 import { License } from "../../models/License.model";
 import Button from "../Button/Button";
 
-import styles from "./FilledLicense.module.css";
+import styles from "./FilledLicense.module.scss";
 
 interface Props {
   id: string;

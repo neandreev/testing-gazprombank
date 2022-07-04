@@ -1,3 +1,5 @@
+@use 'src/styles/_colors';
+
 .text-input {
   display: flex;
   flex-direction: column;
@@ -12,7 +14,7 @@
 }
 
 .input:focus {
-  outline: 1px solid#262C40;
+  outline: 1px solid colors.$black;
   outline-offset: -1px;
 }
 

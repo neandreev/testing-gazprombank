@@ -9,7 +9,7 @@ import {
   useSetLicensesIds,
 } from "../../context";
 
-import styles from "./LicensesForm.module.css";
+import styles from "./LicensesForm.module.scss";
 import Button from "../Button/Button";
 import ToggleInput from "../ToggleInput/ToggleInput";
 

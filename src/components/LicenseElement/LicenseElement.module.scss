@@ -1,5 +1,7 @@
+@use 'src/styles/_colors';
+
 .license {
-  background-color: #F3F4F7;
+  background-color: colors.$lightgray;
   padding: 24px;
 
   box-sizing: border-box;

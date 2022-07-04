@@ -8,7 +8,7 @@ import Button from "../Button/Button";
 import DateInput from "../DateInput/DateInput";
 import TextInput from "../TextInput/TextInput";
 
-import styles from "./LicenseFormComponent.module.css";
+import styles from "./LicenseFormComponent.module.scss";
 
 interface Props {
   handleSubmit: () => void;

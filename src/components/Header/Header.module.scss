@@ -1,5 +1,7 @@
+@use 'src/styles/_colors';
+
 .header {
-  color: #262C40;
+  color: colors.$black;
 
   height: 66px;
   display: flex;

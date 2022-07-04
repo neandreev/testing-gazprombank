@@ -4,7 +4,7 @@ import { ReactComponent as LogoutIcon } from "./Logout.svg";
 import { ReactComponent as ProfileIcon } from "./Profile.svg";
 import { ReactComponent as NotificationsIcon } from "./Notifications.svg";
 
-import styles from "./Profile.module.css";
+import styles from "./Profile.module.scss";
 
 const Profile: FC = () => {
   return (

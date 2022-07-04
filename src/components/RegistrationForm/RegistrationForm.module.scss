@@ -1,4 +1,6 @@
-.documents-form {
+@use 'src/styles/_colors';
+
+.registration-form {
   margin: 20px 0 48px 0;
 }
 
@@ -32,7 +34,7 @@
   width: 174px;
   margin-right: 12px;
 
-  color: #262C40;
+  color: colors.$black;
 
   font-size: 14px;
   line-height: 16px;
@@ -42,7 +44,7 @@
   box-sizing: border-box;
 
   width: 100%;
-  border: 1px solid #D7DEE9;
+  border: 1px solid colors.$gray;
   border-radius: 8px;
   height: 32px;
 }
@@ -54,3 +56,4 @@
 .field-date {
   width: 140px;
 }
+

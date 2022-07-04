@@ -2,7 +2,7 @@ import { FC } from "react";
 
 import { ReactComponent as HomeIcon } from "./Home.svg";
 
-import styles from "./Sidebar.module.css";
+import styles from "./Sidebar.module.scss";
 
 const routes = [{ id: "1", icon: HomeIcon, text: "Главная", href: "/" }];
 

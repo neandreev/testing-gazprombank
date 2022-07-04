@@ -1,3 +1,5 @@
+@use 'src/styles/_colors';
+
 .switch {
   position: relative;
   display: inline-block;
@@ -36,11 +38,11 @@
 }
 
 input:checked + .slider {
-  background-color: #0057B6;
+  background-color: colors.$blue;
 }
 
 input:focus + .slider {
-  box-shadow: 0 0 1px #0057B6;
+  box-shadow: 0 0 1px colors.$blue;
 }
 
 input:checked + .slider:before {

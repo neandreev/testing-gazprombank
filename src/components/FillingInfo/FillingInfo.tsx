@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { useFillingStatus } from "../../context";
 
-import styles from "./FillingInfo.module.css";
+import styles from "./FillingInfo.module.scss";
 
 const FillingInfo: FC = () => {
   const fillingStatus = useFillingStatus();

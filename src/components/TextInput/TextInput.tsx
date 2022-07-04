@@ -1,7 +1,7 @@
 import { FC } from "react";
 import { FieldRenderProps } from "react-final-form";
 
-import styles from "./TextInput.module.css";
+import styles from "./TextInput.module.scss";
 
 type Props = FieldRenderProps<string, any>;
 

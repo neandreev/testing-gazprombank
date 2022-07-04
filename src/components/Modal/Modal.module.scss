@@ -1,3 +1,5 @@
+@use 'src/styles/_colors';
+
 .centered {
   position: fixed;
   top: 50%;
@@ -18,5 +20,5 @@
 .modalContent {
   padding: 10px;
   font-size: 14px;
-  color: #2c3e50;
+  color: colors.$black;
 }

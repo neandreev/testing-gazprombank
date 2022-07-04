@@ -3,7 +3,7 @@ import { Field } from "react-final-form";
 
 import ToggleFormInput from "../ToggleFormInput/ToggleFormInput";
 
-import styles from "./AdditionalInfoForm.module.css";
+import styles from "./AdditionalInfoForm.module.scss";
 
 const AdditionalInfoForm: FC = () => {
   return (
